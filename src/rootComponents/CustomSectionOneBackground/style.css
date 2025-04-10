@@ -1,0 +1,50 @@
+.bgletterS1 {
+  font-size: 2vh;
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  color: #282828;
+  opacity: 0.1;
+  transition: all 1.5s ease;
+}
+
+.bgletterS1:hover {
+  opacity: 0.4;
+  color: #f8c70c;
+  transition: all 0ms ease-out;
+}
+
+.bgWrapS1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.emailWrap {
+  background-color: #f8c70c;
+  position: absolute;
+  bottom: 224px;
+  left: -98px;
+  width: fit-content;
+  padding: 6px 6px 10px 6px;
+  line-height: 1;
+  transform: rotate(90deg);
+  border: 1px solid #faf9f6;
+  border-radius: 8px 8px 0px 0px;
+  color: #faf9f6;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.emailWrap:hover {
+  background-color: #282828;
+  opacity: 0.5;
+  transition: all 0.5s ease;
+}
