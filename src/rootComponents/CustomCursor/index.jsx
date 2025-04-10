@@ -15,14 +15,14 @@ const CustomCursor = React.memo(
     setButtonHovered = () => {},
   }) => {
     const [scrolling, setScrolling] = useState(0);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+
     const cursorRef = useRef(null);
     const borderRef = useRef(null);
     const requestRef = useRef(null);
     const mouse = useRef({ x: 0, y: 0 });
     const border = useRef({ x: 0, y: 0 });
-    let timeoutId = null;
-
-    const [isTouchDevice, setIsTouchDevice] = useState(false);
+    const timeoutRef = useRef(null);
 
     useEffect(() => {
       setIsTouchDevice(
@@ -53,6 +53,9 @@ const CustomCursor = React.memo(
         requestRef.current = requestAnimationFrame(animate);
       };
 
+      const handleMouseDown = () => setIsClicking(true);
+      const handleMouseUp = () => setIsClicking(false);
+
       const handleWheel = (e) => {
         if (e.deltaY > 0) {
           setScrolling(1);
@@ -60,16 +63,16 @@ const CustomCursor = React.memo(
           setScrolling(-1);
         }
 
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
           setScrolling(0);
         }, 150);
       };
 
       document.addEventListener("mousemove", move);
       document.addEventListener("touchmove", move);
-      document.addEventListener("mousedown", () => setIsClicking(true));
-      document.addEventListener("mouseup", () => setIsClicking(false));
+      document.addEventListener("mousedown", handleMouseDown);
+      document.addEventListener("mouseup", handleMouseUp);
       document.addEventListener("wheel", handleWheel);
 
       requestRef.current = requestAnimationFrame(animate);
@@ -77,10 +80,10 @@ const CustomCursor = React.memo(
       return () => {
         document.removeEventListener("mousemove", move);
         document.removeEventListener("touchmove", move);
-        document.removeEventListener("mousedown", () => {});
-        document.removeEventListener("mouseup", () => {});
+        document.removeEventListener("mousedown", handleMouseDown);
+        document.removeEventListener("mouseup", handleMouseUp);
         document.removeEventListener("wheel", handleWheel);
-        clearTimeout(timeoutId);
+        clearTimeout(timeoutRef.current);
         cancelAnimationFrame(requestRef.current);
       };
       // eslint-disable-next-line
@@ -88,7 +91,7 @@ const CustomCursor = React.memo(
 
     if (isTouchDevice) return null;
     const sharedBaseStyle = {
-      position: "absolute",
+      position: "fixed",
       transform: "translate(-50%, -50%)",
       pointerEvents: "none",
       zIndex: 1000,
