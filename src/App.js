@@ -17,6 +17,8 @@ function App() {
       const supportsScrollTimeline = CSS.supports(
         "animation-timeline: scroll()"
       );
+      console.log({ supportsScrollTimeline });
+
       setHasScrollTimeline(supportsScrollTimeline);
 
       if (!supportsScrollTimeline) {
