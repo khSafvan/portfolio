@@ -1,19 +1,69 @@
-import { useState, lazy, Suspense, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import "./App.css";
 import Header from "./rootComponents/Header";
 import CustomSectionOneBackground from "./rootComponents/CustomSectionOneBackground";
-
-// Only lazy load larger components that aren't needed on initial render
-const CustomCursor = lazy(() => import("./rootComponents/CustomCursor"));
+import CustomCursor from "./rootComponents/CustomCursor";
 
 function App() {
   const [isClicking, setIsClicking] = useState(false);
   const [buttonHovered, setButtonHovered] = useState(false);
+  const [hasScrollTimeline, setHasScrollTimeline] = useState(false);
 
   const handleMouseEnter = () => setButtonHovered(true);
   const handleMouseLeave = () => setButtonHovered(false);
 
-  // Memoize the static content sections
+  useEffect(() => {
+    try {
+      const supportsScrollTimeline = CSS.supports(
+        "animation-timeline: scroll()"
+      );
+      setHasScrollTimeline(supportsScrollTimeline);
+
+      if (!supportsScrollTimeline) {
+        let ticking = false;
+        const scrollThreshold = 70;
+
+        const handleScroll = () => {
+          const scrollY = window.scrollY;
+          const viewportHeight = window.innerHeight;
+          const scrollThresholdPixels =
+            (scrollThreshold / 100) * viewportHeight;
+
+          if (scrollY > scrollThresholdPixels) {
+            document.body.setAttribute("data-scroll-position", "down");
+          } else {
+            document.body.setAttribute("data-scroll-position", "up");
+          }
+
+          ticking = false;
+        };
+
+        const scrollListener = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+          }
+        };
+
+        window.addEventListener("scroll", scrollListener, { passive: true });
+
+        handleScroll();
+
+        return () => {
+          window.removeEventListener("scroll", scrollListener);
+        };
+      }
+    } catch (e) {
+      console.log("Scroll animation feature detection failed:", e);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (hasScrollTimeline) {
+      document.documentElement.classList.add("scroll-driven-available");
+    }
+  }, [hasScrollTimeline]);
+
   const staticSections = useMemo(() => {
     return [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((a, i) => (
       <div
@@ -34,14 +84,12 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={null}>
-        <CustomCursor
-          isClicking={isClicking}
-          setIsClicking={setIsClicking}
-          buttonHovered={buttonHovered}
-          setButtonHovered={setButtonHovered}
-        />
-      </Suspense>
+      <CustomCursor
+        isClicking={isClicking}
+        setIsClicking={setIsClicking}
+        buttonHovered={buttonHovered}
+        setButtonHovered={setButtonHovered}
+      />
       <div className="globelWrap">
         <CustomSectionOneBackground
           onMouseEnter={handleMouseEnter}
@@ -53,8 +101,6 @@ function App() {
           {/* placeholder */}
           <div style={{ padding: "20px" }}>
             <h1>Lenis Scroll Test</h1>
-
-            {/* Create multiple sections to enable scrolling */}
             {staticSections}
           </div>
         </div>

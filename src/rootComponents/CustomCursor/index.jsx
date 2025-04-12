@@ -13,7 +13,6 @@ const cursorColors = {
 
 const lerp = (start, end, amt) => start + (end - start) * amt;
 
-// Debounce function to limit how often a function can be called
 const debounce = (fn, ms) => {
   let timer;
   return (...args) => {
@@ -41,14 +40,12 @@ const CustomCursor = React.memo(
     const border = useRef({ x: 0, y: 0 });
     const timeoutRef = useRef(null);
 
-    // Detect touch device once on mount
     useEffect(() => {
       setIsTouchDevice(
         "ontouchstart" in window || navigator.maxTouchPoints > 0
       );
     }, []);
 
-    // Memoize event handlers to prevent unnecessary re-renders
     const move = useCallback((e) => {
       const p = e.touches ? e.touches[0] : e;
       mouse.current = { x: p.clientX, y: p.clientY };
@@ -70,7 +67,6 @@ const CustomCursor = React.memo(
       [setIsClicking]
     );
 
-    // Debounced wheel handler to improve performance
     const handleWheel = useCallback(
       debounce((e) => {
         if (e.deltaY > 0) {
@@ -99,7 +95,6 @@ const CustomCursor = React.memo(
       requestRef.current = requestAnimationFrame(animate);
     }, [updatePosition]);
 
-    // Setup and cleanup event listeners
     useEffect(() => {
       if (isTouchDevice) return;
 
@@ -129,7 +124,6 @@ const CustomCursor = React.memo(
       handleWheel,
     ]);
 
-    // Memoize shared styles to prevent recalculation on each render
     const sharedBaseStyle = useMemo(
       () => ({
         position: "fixed",
@@ -144,7 +138,6 @@ const CustomCursor = React.memo(
     const isHovered = buttonHovered && !isClicking;
     const isActive = isClicking || scrolling !== 0;
 
-    // Memoize style calculations
     const { cursorStyle, borderStyle } = useMemo(() => {
       const cursorSize = isClicking ? "12px" : isHovered ? "8px" : "4px";
       const cursorColor = isActive

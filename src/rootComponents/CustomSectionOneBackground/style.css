@@ -23,9 +23,9 @@
   left: 0;
   z-index: 0;
   user-select: none;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .emailWrap {
@@ -43,12 +43,13 @@
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   font-weight: 600;
-  z-index: 1;
-  transition: all 0.5s ease;
+  z-index: 100;
+  will-change: transform;
+  transition: transform 0.4s ease-out;
 }
 
 .emailWrap:hover {
   background-color: #282828;
   opacity: 0.5;
-  transition: all 0.5s ease;
+  transition: all 0.4s ease-out;
 }

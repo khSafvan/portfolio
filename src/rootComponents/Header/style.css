@@ -8,11 +8,12 @@
   line-height: 1;
   border-radius: 8px;
   z-index: 999;
-  transform: translateZ(0);
+  transform: translateY(0);
   will-change: transform;
   backface-visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
   margin: 12px 32px;
+  transition: transform 0.4s ease-out;
 }
