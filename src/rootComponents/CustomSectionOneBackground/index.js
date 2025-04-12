@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+} from "react";
 import "./style.css";
 
 const CHARACTERS = "QWERTYUIOPASDFGHJKLZXCVBNM#@$&1234567890";
@@ -26,25 +32,33 @@ const CustomSectionOneBackground = React.memo(
           Math.ceil(screenWidth / spanWidth);
         setCount(numSpans);
       }
-    });
+    }, []);
+
+    const handleResize = useCallback(() => {
+      let resizeTimeout;
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateCount, 100);
+    }, [updateCount]);
 
     useEffect(() => {
       updateCount();
-      let resizeTimeout;
 
-      const handleResize = () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(updateCount, 100);
-      };
-
-      window.addEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize, { passive: true });
       return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    }, [updateCount, handleResize]);
 
     useEffect(() => {
       const generatedLetters = Array.from({ length: count }, getRandomLetter);
       setLetters(generatedLetters);
     }, [count]);
+
+    const backgroundLetters = useMemo(() => {
+      return letters.map((char, i) => (
+        <span key={i} className="bgletterS1">
+          {char}
+        </span>
+      ));
+    }, [letters]);
 
     return (
       <>
@@ -52,11 +66,7 @@ const CustomSectionOneBackground = React.memo(
           <span ref={spanRef} className="bgletterS1">
             S
           </span>
-          {letters.map((char, i) => (
-            <span key={i} className="bgletterS1">
-              {char}
-            </span>
-          ))}
+          {backgroundLetters}
         </div>
         <div
           onMouseEnter={onMouseEnter}

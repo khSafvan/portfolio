@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 
 const cursorColors = {
   inactive: "#282828",
@@ -6,6 +12,17 @@ const cursorColors = {
 };
 
 const lerp = (start, end, amt) => start + (end - start) * amt;
+
+// Debounce function to limit how often a function can be called
+const debounce = (fn, ms) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn(...args);
+    }, ms);
+  };
+};
 
 const CustomCursor = React.memo(
   ({
@@ -24,39 +41,38 @@ const CustomCursor = React.memo(
     const border = useRef({ x: 0, y: 0 });
     const timeoutRef = useRef(null);
 
+    // Detect touch device once on mount
     useEffect(() => {
       setIsTouchDevice(
         "ontouchstart" in window || navigator.maxTouchPoints > 0
       );
+    }, []);
 
-      const move = (e) => {
-        const p = e.touches ? e.touches[0] : e;
-        mouse.current = { x: p.clientX, y: p.clientY };
-      };
+    // Memoize event handlers to prevent unnecessary re-renders
+    const move = useCallback((e) => {
+      const p = e.touches ? e.touches[0] : e;
+      mouse.current = { x: p.clientX, y: p.clientY };
+    }, []);
 
-      const updatePosition = (ref, x, y) => {
-        if (ref.current) {
-          ref.current.style.left = `${x}px`;
-          ref.current.style.top = `${y}px`;
-        }
-      };
+    const updatePosition = useCallback((ref, x, y) => {
+      if (ref.current) {
+        ref.current.style.left = `${x}px`;
+        ref.current.style.top = `${y}px`;
+      }
+    }, []);
 
-      const animate = () => {
-        const { x, y } = mouse.current;
+    const handleMouseDown = useCallback(
+      () => setIsClicking(true),
+      [setIsClicking]
+    );
+    const handleMouseUp = useCallback(
+      () => setIsClicking(false),
+      [setIsClicking]
+    );
 
-        updatePosition(cursorRef, x, y);
-
-        border.current.x = lerp(border.current.x, x, 0.15);
-        border.current.y = lerp(border.current.y, y, 0.15);
-        updatePosition(borderRef, border.current.x, border.current.y);
-
-        requestRef.current = requestAnimationFrame(animate);
-      };
-
-      const handleMouseDown = () => setIsClicking(true);
-      const handleMouseUp = () => setIsClicking(false);
-
-      const handleWheel = (e) => {
+    // Debounced wheel handler to improve performance
+    const handleWheel = useCallback(
+      debounce((e) => {
         if (e.deltaY > 0) {
           setScrolling(1);
         } else if (e.deltaY < 0) {
@@ -67,13 +83,31 @@ const CustomCursor = React.memo(
         timeoutRef.current = setTimeout(() => {
           setScrolling(0);
         }, 150);
-      };
+      }, 10),
+      []
+    );
 
-      document.addEventListener("mousemove", move);
-      document.addEventListener("touchmove", move);
+    const animate = useCallback(() => {
+      const { x, y } = mouse.current;
+
+      updatePosition(cursorRef, x, y);
+
+      border.current.x = lerp(border.current.x, x, 0.15);
+      border.current.y = lerp(border.current.y, y, 0.15);
+      updatePosition(borderRef, border.current.x, border.current.y);
+
+      requestRef.current = requestAnimationFrame(animate);
+    }, [updatePosition]);
+
+    // Setup and cleanup event listeners
+    useEffect(() => {
+      if (isTouchDevice) return;
+
+      document.addEventListener("mousemove", move, { passive: true });
+      document.addEventListener("touchmove", move, { passive: true });
       document.addEventListener("mousedown", handleMouseDown);
       document.addEventListener("mouseup", handleMouseUp);
-      document.addEventListener("wheel", handleWheel);
+      document.addEventListener("wheel", handleWheel, { passive: true });
 
       requestRef.current = requestAnimationFrame(animate);
 
@@ -86,63 +120,80 @@ const CustomCursor = React.memo(
         clearTimeout(timeoutRef.current);
         cancelAnimationFrame(requestRef.current);
       };
-      // eslint-disable-next-line
-    }, []);
+    }, [
+      isTouchDevice,
+      move,
+      animate,
+      handleMouseDown,
+      handleMouseUp,
+      handleWheel,
+    ]);
 
-    if (isTouchDevice) return null;
-    const sharedBaseStyle = {
-      position: "fixed",
-      transform: "translate(-50%, -50%)",
-      pointerEvents: "none",
-      zIndex: 1000,
-      willChange: "width, height, background-color, border",
-    };
+    // Memoize shared styles to prevent recalculation on each render
+    const sharedBaseStyle = useMemo(
+      () => ({
+        position: "fixed",
+        transform: "translate(-50%, -50%)",
+        pointerEvents: "none",
+        zIndex: 1000,
+        willChange: "transform",
+      }),
+      []
+    );
 
     const isHovered = buttonHovered && !isClicking;
-    const isIdle = !isClicking && !buttonHovered;
-
-    const cursorSize = isClicking ? "12px" : isHovered ? "8px" : "4px";
-
     const isActive = isClicking || scrolling !== 0;
-    const cursorColor = isActive ? cursorColors.active : cursorColors.inactive;
 
-    const borderSize = (() => {
-      if (scrolling !== 0) return "20px";
-      if (isClicking) return "12px";
-      if (isHovered) return "18px";
-      return "24px";
-    })();
+    // Memoize style calculations
+    const { cursorStyle, borderStyle } = useMemo(() => {
+      const cursorSize = isClicking ? "12px" : isHovered ? "8px" : "4px";
+      const cursorColor = isActive
+        ? cursorColors.active
+        : cursorColors.inactive;
 
-    const borderWidth = isClicking ? "0px" : "1px";
-    const borderColor = isHovered ? cursorColors.active : cursorColors.inactive;
+      const borderSize = (() => {
+        if (scrolling !== 0) return "20px";
+        if (isClicking) return "12px";
+        if (isHovered) return "18px";
+        return "24px";
+      })();
 
-    const defaultBorder = `${borderWidth} solid ${borderColor}`;
-    const scrollingBorder = `3px dotted ${cursorColors.active}`;
+      const borderWidth = isClicking ? "0px" : "1px";
+      const borderColor = isHovered
+        ? cursorColors.active
+        : cursorColors.inactive;
 
-    const borderTop = scrolling === 1 ? scrollingBorder : defaultBorder;
-    const borderBottom = scrolling === -1 ? scrollingBorder : defaultBorder;
+      const defaultBorder = `${borderWidth} solid ${borderColor}`;
+      const scrollingBorder = `3px dotted ${cursorColors.active}`;
 
-    const transition = "200ms ease";
+      const borderTop = scrolling === 1 ? scrollingBorder : defaultBorder;
+      const borderBottom = scrolling === -1 ? scrollingBorder : defaultBorder;
 
-    const cursorStyle = {
-      ...sharedBaseStyle,
-      width: cursorSize,
-      height: cursorSize,
-      backgroundColor: cursorColor,
-      borderRadius: "50%",
-      transition: `width ${transition}, height ${transition}, background-color ${transition}`,
-    };
+      const transition = "200ms ease";
 
-    const borderStyle = {
-      ...sharedBaseStyle,
-      width: borderSize,
-      height: borderSize,
-      border: defaultBorder,
-      borderTop,
-      borderBottom,
-      borderRadius: "50%",
-      transition: `width ${transition}, height ${transition}, border ${transition}, border-color ${transition}`,
-    };
+      return {
+        cursorStyle: {
+          ...sharedBaseStyle,
+          width: cursorSize,
+          height: cursorSize,
+          backgroundColor: cursorColor,
+          borderRadius: "50%",
+          transition: `width ${transition}, height ${transition}, background-color ${transition}`,
+        },
+        borderStyle: {
+          ...sharedBaseStyle,
+          width: borderSize,
+          height: borderSize,
+          border: defaultBorder,
+          borderTop,
+          borderBottom,
+          borderRadius: "50%",
+          transition: `width ${transition}, height ${transition}, border ${transition}, border-color ${transition}`,
+        },
+      };
+    }, [sharedBaseStyle, isClicking, isHovered, isActive, scrolling]);
+
+    if (isTouchDevice) return null;
 
     return (
       <>
