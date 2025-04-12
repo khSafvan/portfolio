@@ -1,26 +1,10 @@
 import { useState, lazy, Suspense, useMemo } from "react";
 import "./App.css";
+import Header from "./rootComponents/Header";
+import CustomSectionOneBackground from "./rootComponents/CustomSectionOneBackground";
 
-// Use lazy loading for components
+// Only lazy load larger components that aren't needed on initial render
 const CustomCursor = lazy(() => import("./rootComponents/CustomCursor"));
-const CustomSectionOneBackground = lazy(() =>
-  import("./rootComponents/CustomSectionOneBackground")
-);
-const Header = lazy(() => import("./rootComponents/Header"));
-
-// Simple fallback component
-const LoadingFallback = () => (
-  <div
-    style={{
-      height: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    Loading...
-  </div>
-);
 
 function App() {
   const [isClicking, setIsClicking] = useState(false);
@@ -50,7 +34,7 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={<LoadingFallback />}>
+      <Suspense fallback={null}>
         <CustomCursor
           isClicking={isClicking}
           setIsClicking={setIsClicking}
@@ -59,15 +43,11 @@ function App() {
         />
       </Suspense>
       <div className="globelWrap">
-        <Suspense fallback={<LoadingFallback />}>
-          <CustomSectionOneBackground
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <Header />
-        </Suspense>
+        <CustomSectionOneBackground
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+        <Header />
         <div className="landingSection"></div>
         <div className="infoSectionWrap container">
           {/* placeholder */}
