@@ -12,9 +12,14 @@
 
 .headerWrapper {
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding-inline: 32px;
   padding-top: 12px;
   color: #faf9f6;
+  z-index: 999;
 }

@@ -4,8 +4,8 @@
   font-weight: 600;
   line-height: 1;
   color: #282828;
-  opacity: 0.1;
-  transition: all 1.5s ease;
+  opacity: 0.05;
+  transition: all 1.4s ease;
 }
 
 .bgletterS1:hover {
@@ -15,19 +15,23 @@
 }
 
 .bgWrapS1 {
+  position: fixed;
   display: flex;
   flex-wrap: wrap;
   gap: 0;
-  position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
 }
 
 .emailWrap {
   background-color: #f8c70c;
-  position: absolute;
-  bottom: 224px;
+  position: fixed;
+  bottom: 24vh;
   left: -98px;
   width: fit-content;
   padding: 6px 6px 10px 6px;
