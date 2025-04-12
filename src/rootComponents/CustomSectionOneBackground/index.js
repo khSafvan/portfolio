@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+} from "react";
 import "./style.css";
 
 const CHARACTERS = "QWERTYUIOPASDFGHJKLZXCVBNM#@$&1234567890";
@@ -14,7 +20,7 @@ const CustomSectionOneBackground = React.memo(
     const [letters, setLetters] = useState([]);
     const spanRef = useRef(null);
 
-    const updateCount = () => {
+    const updateCount = useCallback(() => {
       if (spanRef.current) {
         const spanHeight = spanRef.current.offsetHeight;
         const spanWidth = spanRef.current.offsetWidth;
@@ -26,13 +32,13 @@ const CustomSectionOneBackground = React.memo(
           Math.ceil(screenWidth / spanWidth);
         setCount(numSpans);
       }
-    };
+    }, []);
 
-    const handleResize = () => {
+    const handleResize = useCallback(() => {
       let resizeTimeout;
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(updateCount, 100);
-    };
+    }, [updateCount]);
 
     useEffect(() => {
       updateCount();
