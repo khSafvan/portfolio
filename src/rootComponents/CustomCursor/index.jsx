@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 
 const cursorColors = {
   inactive: "#282828",
@@ -46,44 +40,35 @@ const CustomCursor = React.memo(
       );
     }, []);
 
-    const move = useCallback((e) => {
+    const move = (e) => {
       const p = e.touches ? e.touches[0] : e;
       mouse.current = { x: p.clientX, y: p.clientY };
-    }, []);
+    };
 
-    const updatePosition = useCallback((ref, x, y) => {
+    const updatePosition = (ref, x, y) => {
       if (ref.current) {
         ref.current.style.left = `${x}px`;
         ref.current.style.top = `${y}px`;
       }
-    }, []);
+    };
 
-    const handleMouseDown = useCallback(
-      () => setIsClicking(true),
-      [setIsClicking]
-    );
-    const handleMouseUp = useCallback(
-      () => setIsClicking(false),
-      [setIsClicking]
-    );
+    const handleMouseDown = () => setIsClicking(true);
+    const handleMouseUp = () => setIsClicking(false);
 
-    const handleWheel = useCallback(
-      debounce((e) => {
-        if (e.deltaY > 0) {
-          setScrolling(1);
-        } else if (e.deltaY < 0) {
-          setScrolling(-1);
-        }
+    const handleWheel = debounce((e) => {
+      if (e.deltaY > 0) {
+        setScrolling(1);
+      } else if (e.deltaY < 0) {
+        setScrolling(-1);
+      }
 
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = setTimeout(() => {
-          setScrolling(0);
-        }, 150);
-      }, 10),
-      []
-    );
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        setScrolling(0);
+      }, 150);
+    }, 10);
 
-    const animate = useCallback(() => {
+    const animate = () => {
       const { x, y } = mouse.current;
 
       updatePosition(cursorRef, x, y);
@@ -93,7 +78,7 @@ const CustomCursor = React.memo(
       updatePosition(borderRef, border.current.x, border.current.y);
 
       requestRef.current = requestAnimationFrame(animate);
-    }, [updatePosition]);
+    };
 
     useEffect(() => {
       if (isTouchDevice) return;
