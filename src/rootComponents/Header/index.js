@@ -3,10 +3,8 @@ import "./style.css";
 
 const Header = () => {
   return (
-    <div className="headerWrapper">
-      <div className="iconWrapper">
-        <span style={{ color: "#f8c70c" }}>./</span>sk
-      </div>
+    <div className="iconWrapper">
+      <span style={{ color: "#f8c70c" }}>./</span>sk
     </div>
   );
 };
