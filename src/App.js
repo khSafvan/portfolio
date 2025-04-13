@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import "./App.css";
 import Header from "./rootComponents/Header";
 import CustomSectionOneBackground from "./rootComponents/CustomSectionOneBackground";
@@ -7,7 +7,7 @@ import CustomCursor from "./rootComponents/CustomCursor";
 function App() {
   const [isClicking, setIsClicking] = useState(false);
   const [buttonHovered, setButtonHovered] = useState(false);
-  const [hasScrollTimeline, setHasScrollTimeline] = useState(false);
+  // const [hasScrollTimeline, setHasScrollTimeline] = useState(false);
 
   const handleMouseEnter = () => setButtonHovered(true);
   const handleMouseLeave = () => setButtonHovered(false);
