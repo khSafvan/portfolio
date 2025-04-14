@@ -9,7 +9,7 @@
   border-radius: 8px;
   z-index: 999;
   transform: translateY(0);
-  /* will-change: transform; */
+  will-change: transform;
   backface-visibility: hidden;
   position: fixed;
   top: 0;
