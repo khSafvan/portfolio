@@ -44,7 +44,7 @@ function App() {
       };
 
       window.addEventListener("scroll", onScroll, { passive: true });
-      updateScrollDirection(); // initialize on load
+      updateScrollDirection();
 
       return () => {
         window.removeEventListener("scroll", onScroll);
