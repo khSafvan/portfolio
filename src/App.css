@@ -15,7 +15,7 @@
   z-index: 5 !important;
 }
 
-@supports (animation-timeline: scroll()) {
+/* @supports (animation-timeline: scroll()) {
   @keyframes slide-up {
     from {
       transform: translateY(0);
@@ -55,4 +55,4 @@
   body[data-scroll-position="down"] .emailWrap {
     transform: rotate(90deg) translateY(120%);
   }
-}
+} */
