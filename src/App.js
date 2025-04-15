@@ -22,7 +22,6 @@ function App() {
     };
 
     const supportsScrollTimeline = checkScrollTimelineSupport();
-    console.log({ supportsScrollTimeline });
     setHasScrollTimeline(supportsScrollTimeline);
 
     if (!supportsScrollTimeline) {

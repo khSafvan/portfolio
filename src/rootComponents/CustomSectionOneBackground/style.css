@@ -30,8 +30,10 @@
 
 .emailWrap {
   position: fixed;
+  /* top: 76vh; */
+  /* left: -98px; */
   top: 76vh;
-  left: -98px;
+  left: 98px;
 
   display: inline-block;
   padding: 6px 6px 10px;
