@@ -9,11 +9,8 @@
   line-height: 1;
   border-radius: 8px;
   position: fixed;
-  /* top: 12px; */
-  /* left: 32px; */
-  top: 40px;
-  left: 40px;
-
+  top: 12px;
+  left: 32px;
   z-index: 999;
 
   transform: translateY(0);
