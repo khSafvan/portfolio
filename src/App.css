@@ -57,3 +57,19 @@
     transform: rotate(90deg) translateY(120%);
   }
 }
+
+body[data-scroll-position="down"] .iconWrapper {
+  transform: translateY(-120%) !important;
+}
+
+body[data-scroll-position="up"] .iconWrapper {
+  transform: translateY(0) !important;
+}
+
+body[data-scroll-position="down"] .emailWrap {
+  transform: rotate(90deg) translateY(120%) !important;
+}
+
+body[data-scroll-position="up"] .emailWrap {
+  transform: rotate(90deg) translateY(0) !important;
+}
