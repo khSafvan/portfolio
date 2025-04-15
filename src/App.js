@@ -13,50 +13,42 @@ function App() {
   const handleMouseLeave = () => setButtonHovered(false);
 
   useEffect(() => {
-    try {
-      const supportsScrollTimeline = CSS.supports(
-        "animation-timeline: scroll()"
-      );
-      console.log({ supportsScrollTimeline });
-
-      setHasScrollTimeline(supportsScrollTimeline);
-
-      if (!supportsScrollTimeline) {
-        let ticking = false;
-        const scrollThreshold = 70;
-
-        const handleScroll = () => {
-          const scrollY = window.scrollY;
-          const viewportHeight = window.innerHeight;
-          const scrollThresholdPixels =
-            (scrollThreshold / 100) * viewportHeight;
-
-          if (scrollY > scrollThresholdPixels) {
-            document.body.setAttribute("data-scroll-position", "down");
-          } else {
-            document.body.setAttribute("data-scroll-position", "up");
-          }
-
-          ticking = false;
-        };
-
-        const scrollListener = () => {
-          if (!ticking) {
-            window.requestAnimationFrame(handleScroll);
-            ticking = true;
-          }
-        };
-
-        window.addEventListener("scroll", scrollListener, { passive: true });
-
-        handleScroll();
-
-        return () => {
-          window.removeEventListener("scroll", scrollListener);
-        };
+    const checkScrollTimelineSupport = () => {
+      try {
+        return CSS.supports?.("animation-timeline: scroll()") || false;
+      } catch {
+        return false;
       }
-    } catch (e) {
-      console.log("Scroll animation feature detection failed:", e);
+    };
+
+    const supportsScrollTimeline = checkScrollTimelineSupport();
+    console.log({ supportsScrollTimeline });
+    setHasScrollTimeline(supportsScrollTimeline);
+
+    if (!supportsScrollTimeline) {
+      let ticking = false;
+      const scrollThreshold = window.innerHeight * 0.7;
+
+      const updateScrollDirection = () => {
+        const scrollY = window.scrollY;
+        const direction = scrollY > scrollThreshold ? "down" : "up";
+        document.body.setAttribute("data-scroll-position", direction);
+        ticking = false;
+      };
+
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateScrollDirection);
+          ticking = true;
+        }
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      updateScrollDirection(); // initialize on load
+
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+      };
     }
   }, []);
 

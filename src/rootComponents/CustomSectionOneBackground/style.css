@@ -29,28 +29,33 @@
 }
 
 .emailWrap {
-  background-color: #f8c70c;
   position: fixed;
   top: 76vh;
-  left: 200px;
-  /* left: -98px; */
+  left: -98px;
+
+  display: inline-block;
+  padding: 6px 6px 10px;
   width: fit-content;
-  padding: 6px 6px 10px 6px;
-  line-height: 1;
-  transform: rotate(90deg);
-  border: 1px solid #faf9f6;
-  border-radius: 8px 8px 0px 0px;
+
+  background-color: #f8c70c;
   color: #faf9f6;
-  font-size: 18px;
+  border: 1px solid #faf9f6;
+  border-radius: 8px 8px 0 0;
+
   font-family: "Roboto", sans-serif;
+  font-size: 18px;
   font-weight: 600;
-  z-index: 100;
+  line-height: 1;
+
+  transform: rotate(90deg);
   will-change: transform;
   transition: transform 0.4s ease-out;
+
+  z-index: 100;
 }
 
 .emailWrap:hover {
   background-color: #282828;
   opacity: 0.5;
-  transition: all 0.4s ease-out;
+  transition: background-color 0.4s ease-out, opacity 0.4s ease-out;
 }

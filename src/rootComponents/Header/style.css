@@ -1,19 +1,24 @@
 .iconWrapper {
   font-size: 48px;
   font-family: "Roboto Flex", sans-serif;
-  /* letter-spacing: normal; */
   font-weight: 600;
+  letter-spacing: normal;
   color: #282828;
-  background: #faf9f6;
-  /* line-height: 1; */
-  /* border-radius: 8px; */
+  background-color: #faf9f6;
+
+  line-height: 1;
+  border-radius: 8px;
+  position: fixed;
+  top: 12px;
+  left: 32px;
   z-index: 999;
-  /* transform: translateY(0);
+
+  transform: translateY(0);
+  transition: transform 0.4s ease-out;
+
+  backface-visibility: hidden;
   will-change: transform;
-  backface-visibility: hidden; */
-  /* position: absolute; */
-  /* top: 0;
-  left: 0; */
-  margin: 12px 32px;
-  /* transition: transform 0.4s ease-out; */
+
+  /* Optional enhancement: force GPU acceleration */
+  transform-style: preserve-3d;
 }
