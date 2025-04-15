@@ -12,8 +12,8 @@
   will-change: transform;
   backface-visibility: hidden;
   position: fixed;
-  top: 12px; /* Try 12-20px instead of 1vh + margin */
-  left: 32px;
-  margin: 0; /* Remove margin */
+  top: 50px;
+  left: 0;
+  margin: 12px 32px;
   transition: transform 0.4s ease-out;
 }
