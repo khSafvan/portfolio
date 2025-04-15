@@ -15,7 +15,9 @@
   z-index: 5 !important;
 }
 
-/* @supports (animation-timeline: scroll()) {
+/* Scroll-linked animations: Chrome (with -webkit-) and Firefox */
+@supports (animation-timeline: scroll()) or
+  (-webkit-animation-timeline: scroll()) {
   @keyframes slide-up {
     from {
       transform: translateY(0);
@@ -35,18 +37,33 @@
   }
 
   .iconWrapper {
-    animation: slide-up linear both;
+    animation-name: slide-up;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
     animation-timeline: scroll();
+    -webkit-animation-timeline: scroll();
+
     animation-range: 0 70vh;
+    -webkit-animation-range: 0 70vh;
   }
 
   .emailWrap {
-    animation: slide-left linear both;
+    animation-name: slide-left;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
     animation-timeline: scroll();
+    -webkit-animation-timeline: scroll();
+
     animation-range: 0 70vh;
+    -webkit-animation-range: 0 70vh;
   }
 }
 
+/* Fallback for browsers without scroll-timeline support */
 @supports not (animation-timeline: scroll()) {
   body[data-scroll-position="down"] .iconWrapper {
     transform: translateY(-120%);
@@ -55,4 +72,4 @@
   body[data-scroll-position="down"] .emailWrap {
     transform: rotate(90deg) translateY(120%);
   }
-} */
+}
