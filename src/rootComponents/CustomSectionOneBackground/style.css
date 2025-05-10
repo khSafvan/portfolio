@@ -15,7 +15,7 @@
 }
 
 .bgWrapS1 {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   gap: 0;
@@ -29,8 +29,8 @@
 }
 
 .emailWrap {
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: 34vh;
   left: 0;
   display: inline-block;
   padding: 6px 12px;

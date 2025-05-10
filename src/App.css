@@ -6,70 +6,21 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  position: relative;
   z-index: 5 !important;
 }
+
+.myStackSection {
+  width: 100%;
+  height: 64vh;
+  background-color: #f8c70c;
+  overflow: hidden;
+  z-index: 5 !important;
+}
+
 .infoSectionWrap {
   height: fit-content;
   overflow: hidden;
   position: relative;
   z-index: 5 !important;
-}
-
-/* Scroll-linked animations: Chrome (with -webkit-) and Firefox */
-@supports (animation-timeline: scroll()) or
-  (-webkit-animation-timeline: scroll()) {
-  @keyframes slide-up {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-120%);
-    }
-  }
-
-  @keyframes slide-left {
-    from {
-      transform: rotate(90deg) translateY(0);
-    }
-    to {
-      transform: rotate(90deg) translateY(120%);
-    }
-  }
-
-  .iconWrapper {
-    animation-name: slide-up;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-timing-function: linear;
-
-    animation-timeline: scroll();
-    -webkit-animation-timeline: scroll();
-
-    animation-range: 0 70vh;
-    -webkit-animation-range: 0 70vh;
-  }
-
-  .emailWrap {
-    animation-name: slide-left;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-timing-function: linear;
-
-    animation-timeline: scroll();
-    -webkit-animation-timeline: scroll();
-
-    animation-range: 0 70vh;
-    -webkit-animation-range: 0 70vh;
-  }
-}
-
-/* Fallback for browsers without scroll-timeline support */
-@supports not (animation-timeline: scroll()) {
-  body[data-scroll-position="down"] .iconWrapper {
-    transform: translateY(-120%);
-  }
-
-  body[data-scroll-position="down"] .emailWrap {
-    transform: rotate(90deg) translateY(120%);
-  }
 }
