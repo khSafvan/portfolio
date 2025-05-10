@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
 
 const cursorColors = {
-  inactive: "#282828",
-  active: "#f8c70c",
+  inactive: "#1E1E1E",
+  active: "#FFC300",
+  hoverRing: "#FFB000",
+  clickRing: "#005F73",
 };
 
 const lerp = (start, end, amt) => start + (end - start) * amt;
@@ -118,21 +120,23 @@ const CustomCursor = React.memo(
     const isActive = isClicking || scrolling !== 0;
 
     const { cursorStyle, borderStyle } = useMemo(() => {
-      const cursorSize = isClicking ? "12px" : isHovered ? "8px" : "4px";
+      const cursorSize = isClicking ? "10px" : isHovered ? "8px" : "4px";
       const cursorColor = isActive
         ? cursorColors.active
         : cursorColors.inactive;
 
       const borderSize = (() => {
         if (scrolling !== 0) return "20px";
-        if (isClicking) return "12px";
+        if (isClicking) return "16px";
         if (isHovered) return "18px";
         return "24px";
       })();
 
-      const borderWidth = isClicking ? "0px" : "1px";
-      const borderColor = isHovered
-        ? cursorColors.active
+      const borderWidth = "1px";
+      const borderColor = isClicking
+        ? cursorColors.clickRing
+        : isHovered
+        ? cursorColors.hoverRing
         : cursorColors.inactive;
 
       const defaultBorder = `${borderWidth} solid ${borderColor}`;
