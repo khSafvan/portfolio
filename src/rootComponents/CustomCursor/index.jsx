@@ -127,7 +127,7 @@ const CustomCursor = React.memo(
 
       const borderSize = (() => {
         if (scrolling !== 0) return "20px";
-        if (isClicking) return "16px";
+        if (isClicking) return "14px";
         if (isHovered) return "18px";
         return "24px";
       })();

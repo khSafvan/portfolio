@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./rootComponents/Header";
 import CustomSectionOneBackground from "./rootComponents/CustomSectionOneBackground";
