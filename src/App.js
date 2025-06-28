@@ -26,6 +26,14 @@ function App() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           />
+          <div className="devImgWrapper">
+            <img
+              draggable="false"
+              style={{}}
+              src="/dev8bitArt.png"
+              alt="Developer"
+            />
+          </div>
         </div>
         <div className="myStackSection"></div>
       </div>

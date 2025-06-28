@@ -68,13 +68,13 @@ const CustomSectionOneBackground = React.memo(
           </span>
           {backgroundLetters}
         </div>
-        <div
+        {/* <div
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           className="emailWrap"
         >
           khalifasafvan@yahoo.com
-        </div>
+        </div> */}
       </>
     );
   }

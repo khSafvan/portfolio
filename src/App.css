@@ -24,3 +24,20 @@
   position: relative;
   z-index: 5 !important;
 }
+
+.devImgWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25%;
+  aspect-ratio: 2 / 3;
+}
+.devImgWrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 2 / 3;
+  user-select: none;
+  pointer-events: none;
+}

@@ -4,7 +4,14 @@ import "./style.css";
 const Header = () => {
   return (
     <div className="iconWrapper">
-      <span style={{ color: "#f8c70c" }}>./</span>sk
+      <img
+        draggable="false"
+        style={{ userSelect: "none", pointerEvents: "none" }}
+        src="/wolfLogo.png"
+        width={64}
+        height={64}
+        alt="Nerdy Wolf"
+      />
     </div>
   );
 };
