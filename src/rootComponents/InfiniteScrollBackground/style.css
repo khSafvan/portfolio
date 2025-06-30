@@ -1,0 +1,44 @@
+/* Exo Thin Font */
+@import url("https://fonts.googleapis.com/css?family=Exo:100");
+
+/* Background image */
+:root {
+  --bg-url: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC");
+  --bg-size: 50px;
+}
+
+/* Animation Keyframes */
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: var(--bg-size) var(--bg-size);
+  }
+}
+
+.infinite-scroll-bg {
+  background: var(--bg-url) repeat 0 0;
+  animation: bg-scrolling-reverse 0.92s linear infinite;
+  font-family: "Exo", sans-serif;
+  color: #999;
+  padding: 4rem;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.infinite-scroll-bg::before {
+  content: " ";
+  font-size: 5rem;
+  font-weight: 100;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.2;
+  pointer-events: none;
+}
