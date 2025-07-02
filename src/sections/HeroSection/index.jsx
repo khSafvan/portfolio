@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import InfiniteScrollBackground from "../../components/InfiniteScrollBackground";
 import Header from "../../components/Header";
 import "./style.css";
+import SystemWindow from "../../components/SystemWindow";
+import { CursorContext } from "../../contexts/cursorState";
 
-export default function HeroSection({
-  isClicking = false,
-  setIsClicking = () => {},
-  buttonHovered = false,
-  setButtonHovered = () => {},
-}) {
+export default function HeroSection() {
+  const { isClicking, buttonHovered, setIsClicking, setButtonHovered } =
+    useContext(CursorContext);
   const handleMouseEnter = () => setButtonHovered(true);
   const handleMouseLeave = () => setButtonHovered(false);
 
@@ -24,6 +23,7 @@ export default function HeroSection({
           alt="Developer"
         />
       </div>
+      <SystemWindow />
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

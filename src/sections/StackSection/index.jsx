@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
+import { CursorContext } from "../../contexts/cursorState";
 
-export default function StackSection({
-  isClicking = false,
-  setIsClicking = () => {},
-  buttonHovered = false,
-  setButtonHovered = () => {},
-}) {
+export default function StackSection() {
+  const { isClicking, buttonHovered, setIsClicking, setButtonHovered } =
+    useContext(CursorContext);
   return (
     <div className="myStackSection">
       <div className="burgerImgWrapper">

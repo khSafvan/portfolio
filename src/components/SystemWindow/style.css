@@ -1,0 +1,15 @@
+.systemWindowWrapper {
+  width: 400px;
+  height: 600px;
+  background: rgba(77, 168, 218, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  border-radius: 12px;
+  position: absolute;
+  display: relative;
+  overflow: hidden;
+  right: 30%;
+  top: 45%;
+  z-index: 12;
+  transform: translate(50%, -50%);
+}
