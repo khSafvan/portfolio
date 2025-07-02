@@ -1,6 +1,6 @@
 .popupWindow {
-  width: 400px;
-  height: 600px;
+  width: 360px;
+  height: 480px;
   border: 1px solid rgba(250, 249, 246, 0.5);
   background: rgba(77, 168, 218, 0.5);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -11,7 +11,7 @@
   right: 30%;
   top: 45%;
   z-index: 12;
-  transform: translate(50%, -50%);
+  transform: translate(50%, -55%);
   opacity: 0;
   pointer-events: none; /* prevent clicking when hidden */
 }
@@ -27,7 +27,7 @@
 }
 
 /* Animations */
-@keyframes fadeInPopup {
+@keyframes fadeOutPopup {
   from {
     opacity: 0;
     transform: translate(40%, -45%);
@@ -38,7 +38,7 @@
   }
 }
 
-@keyframes fadeOutPopup {
+@keyframes fadeInPopup {
   from {
     opacity: 1;
     transform: translate(50%, -50%);

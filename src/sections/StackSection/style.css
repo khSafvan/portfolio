@@ -1,8 +1,7 @@
 .myStackSection {
-  width: 100%;
-  height: 100vh;
-  background-color: #f8c70c;
-  border-top: 1px solid rgba(40, 40, 40, 0.5);
+  width: calc(100vw);
+  height: calc(100vh);
+  background-color: rgba(248, 199, 12);
   display: flex;
   justify-content: space-between;
   align-items: center;

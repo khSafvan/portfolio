@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import InfiniteScrollBackground from "../../components/InfiniteScrollBackground";
 import Header from "../../components/Header";
+import GoalsTicker from "../../components/GoalsTicker";
 import "./style.css";
 import SystemWindow from "../../components/SystemWindow";
 import { CursorContext } from "../../contexts/cursorState";
@@ -37,11 +38,7 @@ export default function HeroSection() {
       >
         khalifasafvan@yahoo.com
       </div>
-      <div className="rightStatsWrapper">
-        <div className="rightStats">ASK1</div>
-        <div className="rightStats">ASK1</div>
-        <div className="rightStats">ASK1</div>
-      </div>
+      <GoalsTicker />
     </div>
   );
 }

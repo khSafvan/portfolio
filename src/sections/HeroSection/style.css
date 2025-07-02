@@ -8,7 +8,7 @@
 
 .devImgWrapper {
   position: absolute;
-  bottom: 0;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   height: 75%;
@@ -27,7 +27,7 @@
 }
 .emailWrap {
   position: absolute;
-  bottom: 34vh;
+  bottom: 36vh;
   left: 0;
   display: inline-block;
   padding: 6px 12px;
@@ -48,28 +48,10 @@
   transform-origin: bottom left;
   transform: rotate(90deg);
   transition: background-color 0.4s ease-out, opacity 0.4s ease-out;
-  z-index: 10;
+  z-index: 12;
 }
 
 .emailWrap:hover {
   background-color: rgba(40, 40, 40, 0.7);
   backdrop-filter: blur(0.75px);
-}
-
-.rightStatsWrapper {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 24px;
-  right: 0;
-  bottom: 0;
-}
-
-.rightStats {
-  font-size: 3rem;
-  font-weight: 500;
-  background-color: rgba(250, 250, 250, 0.7);
-  color: rgba(40, 40, 40, 0.2);
-  backdrop-filter: blur(1px);
 }
