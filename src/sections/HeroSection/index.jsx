@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import InfiniteScrollBackground from "../../components/InfiniteScrollBackground";
 import Header from "../../components/Header";
 import "./style.css";
@@ -8,6 +8,7 @@ import { CursorContext } from "../../contexts/cursorState";
 export default function HeroSection() {
   const { isClicking, buttonHovered, setIsClicking, setButtonHovered } =
     useContext(CursorContext);
+  const [showStats, setShowStats] = useState(1);
   const handleMouseEnter = () => setButtonHovered(true);
   const handleMouseLeave = () => setButtonHovered(false);
 
@@ -15,7 +16,12 @@ export default function HeroSection() {
     <div className="landingSection">
       <InfiniteScrollBackground />
       <Header />
-      <div className="devImgWrapper">
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => setShowStats(!showStats)}
+        className="devImgWrapper"
+      >
         <img
           draggable="false"
           style={{}}
@@ -23,7 +29,7 @@ export default function HeroSection() {
           alt="Developer"
         />
       </div>
-      <SystemWindow />
+      <SystemWindow isOpen={showStats} setIsOpen={setShowStats} />
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
