@@ -12,12 +12,13 @@ function SystemWindow({ isOpen = false, setIsOpen = () => {} }) {
     return () => {
       clearTimeout(timeout);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div
       className={`popupWindow  ${isOpen ? "fade-in" : "fade-out"}`}
       onClick={(e) => e.stopPropagation()}
-    ></div>
+    />
   );
 }
 

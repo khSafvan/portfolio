@@ -14,7 +14,7 @@ const Header = () => {
           alt="Nerdy Wolf"
         />
       </div>
-      <div className="actionBtnWrapper">Download Resume</div>
+      <div className="actionBtnWrapper">Schedule a Call</div>
     </div>
   );
 };

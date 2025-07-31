@@ -35,8 +35,7 @@
   align-items: center;
 }
 
-.actionbtnwrapper:hover {
-  transform: scale(0.95);
+.actionBtnWrapper:active {
   filter: var(--hover-shadow);
   transition: transform 0.1s ease-out;
 }

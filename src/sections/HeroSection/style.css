@@ -8,8 +8,8 @@
 
 .devImgWrapper {
   position: absolute;
-  bottom: 32px;
-  left: 50%;
+  bottom: 44px;
+  left: 85%;
   transform: translateX(-50%);
   height: 75%;
   aspect-ratio: 2 / 3;
