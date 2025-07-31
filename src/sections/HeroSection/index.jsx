@@ -9,9 +9,10 @@ import { CursorContext } from "../../contexts/cursorState";
 export default function HeroSection() {
   const { isClicking, buttonHovered, setIsClicking, setButtonHovered } =
     useContext(CursorContext);
-  const [showStats, setShowStats] = useState(1);
+  const [showStats, setShowStats] = useState(false);
   const handleMouseEnter = () => setButtonHovered(true);
   const handleMouseLeave = () => setButtonHovered(false);
+  console.log(showStats);
 
   return (
     <div className="landingSection">

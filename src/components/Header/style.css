@@ -1,20 +1,52 @@
+:root {
+  --drop-shadow: drop-shadow(4px 6px 12px rgba(0, 0, 0, 0.35));
+  --hover-shadow: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.175));
+}
+
 .iconWrapper {
   font-size: 48px;
   font-family: "Roboto Flex", sans-serif;
   font-weight: 600;
   letter-spacing: normal;
-  color: #282828;
-  filter: drop-shadow(4px 6px 12px rgba(0, 0, 0, 0.35));
   line-height: 1;
+  color: #282828;
+  filter: var(--drop-shadow);
   border-radius: 8px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 16px 0px 0px 18px;
+  margin: 16px;
   z-index: 11;
   transform: translateY(0);
   transition: transform 0.4s ease-out;
   backface-visibility: hidden;
   will-change: transform;
   transform-style: preserve-3d;
+}
+
+.actionBtnWrapper {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #4da8da;
+  color: #faf9f6;
+  filter: var(--drop-shadow);
+  border-radius: 26px;
+  padding: 12px;
+  margin: 16px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionbtnwrapper:hover {
+  transform: scale(0.95);
+  filter: var(--hover-shadow);
+  transition: transform 0.1s ease-out;
+}
+
+.headerWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

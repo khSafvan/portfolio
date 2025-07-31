@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import "./style.css";
 
-function SystemWindow({ isOpen = 0, setIsOpen = () => {} }) {
+function SystemWindow({ isOpen = false, setIsOpen = () => {} }) {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setIsOpen(0);
+      setIsOpen(false);
       return () => {
         clearTimeout(timeout);
       };
-    }, 2000);
+    }, 3000);
     return () => {
       clearTimeout(timeout);
     };
