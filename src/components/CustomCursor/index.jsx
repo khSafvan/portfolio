@@ -21,7 +21,7 @@ const debounce = (fn, ms) => {
 };
 
 const CustomCursor = React.memo(() => {
-  const { isClicking, buttonHovered, setIsClicking, setButtonHovered } =
+  const { isClicking, buttonHovered, setIsClicking } =
     useContext(CursorContext);
 
   const [scrolling, setScrolling] = useState(0);

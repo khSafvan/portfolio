@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import CustomCursor from "./components/CustomCursor";
 import HeroSection from "./sections/HeroSection";
