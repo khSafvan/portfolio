@@ -1,7 +1,12 @@
-import React from "react";
+import { useContext } from "react";
 import "./style.css";
+import { CursorContext } from "../../contexts/cursorState";
 
 const Header = () => {
+  const { setButtonHovered } = useContext(CursorContext);
+  const handleMouseEnter = () => setButtonHovered(true);
+  const handleMouseLeave = () => setButtonHovered(false);
+
   return (
     <div className="headerWrapper">
       <div className="iconWrapper">
@@ -14,7 +19,14 @@ const Header = () => {
           alt="Nerdy Wolf"
         />
       </div>
-      <div className="actionBtnWrapper">Schedule a Call</div>
+
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="actionBtnWrapper"
+      >
+        Schedule a Call
+      </div>
     </div>
   );
 };

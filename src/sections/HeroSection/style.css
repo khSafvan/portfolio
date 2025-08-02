@@ -8,12 +8,12 @@
 
 .devImgWrapper {
   position: absolute;
-  bottom: 44px;
-  left: 85%;
+  bottom: 40px;
+  left: 50%;
   transform: translateX(-50%);
-  height: 75%;
+  height: 82%;
   aspect-ratio: 2 / 3;
-  z-index: 11;
+  z-index: 10;
 }
 .devImgWrapper img {
   width: 100%;
@@ -27,7 +27,7 @@
 }
 .emailWrap {
   position: absolute;
-  bottom: 36vh;
+  bottom: 384px;
   left: 0;
   display: inline-block;
   padding: 6px 12px;
