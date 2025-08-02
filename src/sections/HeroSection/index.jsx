@@ -26,6 +26,16 @@ export default function HeroSection() {
           alt="Developer"
         />
       </div>
+      <div className="heroIntroText">
+        <div className="heroName">Hi, I am Safvan</div>
+        <div className="heroIntro">
+          a Web Developer with 3+ years of experience helping businesses build
+          fast, modern, and user-focused digital solutions. I combine intutive
+          design, efficient code, and strategic thinking to turn ideas into
+          powerful web experiences.
+        </div>
+        <div className="heroHireBtn">Hire Me</div>
+      </div>
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

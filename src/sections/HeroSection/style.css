@@ -37,12 +37,12 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: normal;
-  color: #faf9f6;
+  color: rgb(250, 249, 246);
   background-color: rgba(248, 199, 12, 0.7);
   filter: drop-shadow(4px 6px 12px rgba(0, 0, 0, 0.35));
   backdrop-filter: blur(0.75px);
   -webkit-backdrop-filter: blur(0.75px);
-  border: 1px solid #faf9f6;
+  border: 1px solid rgb(250, 249, 246);
   border-bottom: 0px;
   border-radius: 6px 6px 0 0;
   transform-origin: bottom left;
@@ -54,4 +54,44 @@
 .emailWrap:hover {
   background-color: rgba(40, 40, 40, 0.7);
   backdrop-filter: blur(0.75px);
+}
+
+.heroIntroText {
+  position: absolute;
+  bottom: 108px;
+  left: 84px;
+  max-width: 20%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: left;
+  justify-content: center;
+  color: rgba(40, 40, 40);
+}
+
+.heroName {
+  font-family: Anton;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.heroIntro {
+  font-family: Geist;
+  font-weight: 400;
+  line-height: 1.2;
+
+  font-size: 18px;
+}
+
+.heroHireBtn {
+  background-color: rgba(248, 199, 12);
+  font-family: Anton;
+  font-size: 18px;
+  color: rgb(40, 40, 40);
+  width: fit-content;
+  border-radius: 2px;
+  padding: 8px 16px;
 }

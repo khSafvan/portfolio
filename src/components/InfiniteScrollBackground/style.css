@@ -18,7 +18,7 @@
   background: var(--bg-url) repeat 0 0;
   animation: bg-scrolling-reverse 0.92s linear infinite;
   font-family: "Exo", sans-serif;
-  color: #999;
+  color: rgb(153, 153, 153);
   padding: 4rem;
   text-align: center;
   overflow: hidden;

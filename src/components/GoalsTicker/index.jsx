@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 
 const GoalsTicker = () => {
-  const items = Array(20).fill("# GOALS");
+  const items = [];
   return (
     <>
       <div className="goals-blender" />
