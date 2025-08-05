@@ -32,7 +32,7 @@
   font-size: 1.25rem;
   padding: 4px;
   color: rgba(250, 249, 246, 0.8);
-  animation: scroll 30s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 
 @keyframes scroll {
