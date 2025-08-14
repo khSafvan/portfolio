@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { CursorContext } from "../../contexts/cursorState";
 import { Button } from "../ui";
-import { portfolioConfig } from "../../config/portfolio";
 import "./Header.css";
 
 const Header = () => {
