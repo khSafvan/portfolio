@@ -31,7 +31,7 @@ export default function HeroSection() {
       start: "top top",
       end: "bottom top",
       pin: true,
-      pinSpacing: false,
+      pinSpacing: true,
       onEnter: () => {
         gsap.to(section, {
           scale: 1.02,
