@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://khalifasafvan.netlify.app/",
   "dependencies": {
-    "gsap": "^3.12.5",
+    "gsap": "^3.13.0",
     "lenis": "^1.2.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

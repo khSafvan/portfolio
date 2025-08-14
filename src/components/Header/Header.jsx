@@ -12,7 +12,7 @@ const Header = () => {
     <header className="header">
       <a
         href="#home"
-        className="header__logo"
+        className="logo"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -22,14 +22,14 @@ const Header = () => {
           width={64}
           height={64}
           alt="Nerdy Wolf"
-          className="header__logo-image"
+          className="logo-image"
         />
       </a>
 
       <Button
         variant="secondary"
         size="medium"
-        className="header__cta"
+        className="cta"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
