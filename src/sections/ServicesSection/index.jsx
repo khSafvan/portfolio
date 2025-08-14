@@ -31,7 +31,7 @@ const ServicesSection = () => {
       start: "top center",
       end: "bottom center",
       pin: true,
-      pinSpacing: false,
+      pinSpacing: true,
       onEnter: () => {
         // Animate title
         gsap.fromTo(

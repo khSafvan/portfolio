@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
       start: "top center",
       end: "bottom center",
       pin: true,
-      pinSpacing: false,
+      pinSpacing: true,
       onEnter: () => {
         // Animate title with fade and slide effect
         gsap.fromTo(

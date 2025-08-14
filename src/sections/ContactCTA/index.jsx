@@ -32,7 +32,7 @@ const ContactCTA = () => {
       start: "top center",
       end: "bottom center",
       pin: true,
-      pinSpacing: false,
+      pinSpacing: true,
       onEnter: () => {
         // Create a timeline for sequential animations
         const tl = gsap.timeline({ ease: "power2.out" });
