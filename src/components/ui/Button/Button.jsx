@@ -1,5 +1,5 @@
 import React from "react";
-import "./Button.css";
+import styles from "./Button.module.css";
 
 const Button = ({
   children,
@@ -11,10 +11,10 @@ const Button = ({
   type = "button",
   ...props
 }) => {
-  const baseClass = "btn";
-  const variantClass = `btn--${variant}`;
-  const sizeClass = `btn--${size}`;
-  const disabledClass = disabled ? "btn--disabled" : "";
+  const baseClass = styles["btn"];
+  const variantClass = styles[`btn--${variant}`] || "";
+  const sizeClass = styles[`btn--${size}`] || "";
+  const disabledClass = disabled ? styles["btn--disabled"] : "";
 
   const combinedClassName =
     `${baseClass} ${variantClass} ${sizeClass} ${disabledClass} ${className}`.trim();

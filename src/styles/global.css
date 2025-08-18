@@ -5,31 +5,15 @@
   box-sizing: border-box;
 }
 
-html {
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 html::-webkit-scrollbar {
   display: none;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-primary);
-  background-color: var(--color-background);
-  overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
+body { margin: 0; padding: 0; font-family: var(--font-family-body); color: var(--color-text-primary); background-color: var(--color-background); }
 
-body::-webkit-scrollbar {
-  display: none;
-}
+/* Keep global resets minimal to avoid cross-component effects */
 
 /* Typography */
 h1,

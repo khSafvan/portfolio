@@ -1,0 +1,28 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  z-index: 20;
+}
+
+.brandAndNav { display: flex; align-items: center; gap: 28px; }
+.brand { font-family: "Anton", sans-serif; font-size: 22px; color: #172022; }
+.logo { text-decoration: none; }
+.nav { display: flex; gap: 22px; }
+.navLink { color: rgba(23, 32, 34, 0.7); font-family: "Geist", sans-serif; font-size: 14px; text-decoration: none; }
+.navLink:hover { color: #172022; }
+
+.contactArea { display: flex; align-items: center; gap: 16px; }
+.phone { color: rgba(23, 32, 34, 0.7); font-size: 14px; text-decoration: none; }
+.cta { line-height: 1; }
+
+@media (max-width: 768px) {
+  .nav { display: none; }
+  .phone { display: none; }
+}
+

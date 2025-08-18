@@ -1,0 +1,105 @@
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f7f4ee;
+}
+
+.heroCard {
+  position: relative;
+  width: min(1160px, 92vw);
+  height: 80vh;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.portrait {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 78%;
+  aspect-ratio: 2/3;
+  z-index: 5;
+  display: grid;
+  place-items: end center;
+}
+
+.portraitImage {
+  position: relative;
+  width: 360px;
+  height: auto;
+  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.18));
+  z-index: 6;
+}
+
+.heroLeft {
+  position: absolute;
+  left: 56px;
+  top: 34%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.heroTitle {
+  font-family: "Anton", sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #172022;
+}
+
+.emailPill {
+  width: fit-content;
+  background: #ff6b2a;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.experience { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+.years { font-size: 40px; font-weight: 800; color: #172022; }
+.label { text-transform: uppercase; color: rgba(23, 32, 34, 0.7); letter-spacing: 0.06em; font-weight: 600; }
+
+.heroRight {
+  position: absolute;
+  right: 56px;
+  top: 30%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+
+.sideNote { max-width: 320px; color: rgba(23, 32, 34, 0.7); font-family: "Geist", sans-serif; }
+.badge { display: grid; grid-template-columns: 56px auto; gap: 12px; align-items: center; }
+.badgeInner { width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(23,32,34,0.6); display: grid; place-items: center; }
+.badgeDot { width: 10px; height: 10px; background: rgba(23,32,34,0.6); border-radius: 50%; }
+.badgeText { font-size: 12px; color: rgba(23, 32, 34, 0.7); letter-spacing: 0.08em; }
+.cta { margin-top: 8px; }
+
+@media (max-width: 1024px) {
+  .heroCard { height: auto; padding-bottom: 120px; }
+  .heroLeft { left: 28px; top: 24%; }
+  .heroRight { right: 28px; top: 24%; }
+  .heroTitle { font-size: 42px; }
+  .portraitImage { width: 300px; }
+}
+
+@media (max-width: 768px) {
+  .portrait { position: static; transform: none; height: auto; margin: 24px auto 0; }
+  .heroCard { padding-bottom: 28px; }
+  .heroLeft, .heroRight { position: static; transform: none; margin: 0 20px; }
+  .heroTitle { font-size: 36px; }
+  .heroRight { justify-items: start; }
+}
+

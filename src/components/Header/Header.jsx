@@ -1,41 +1,25 @@
-import React, { useContext } from "react";
-import { CursorContext } from "../../contexts/cursorState";
+import React from "react";
 import { Button } from "../ui";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 const Header = () => {
-  const { setButtonHovered } = useContext(CursorContext);
-  const handleMouseEnter = () => setButtonHovered(true);
-  const handleMouseLeave = () => setButtonHovered(false);
-
   return (
-    <header className="header">
-      <div className="brand-and-nav">
-        <a
-          href="#home"
-          className="logo"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <span className="brand">Binjan</span>
+    <header className={styles.header}>
+      <div className={styles.brandAndNav}>
+        <a href="#home" className={styles.logo}>
+          <span className={styles.brand}>Binjan</span>
         </a>
-        <nav className="nav">
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#works" className="nav-link">Works</a>
-          <a href="#notes" className="nav-link">Notes</a>
-          <a href="#experience" className="nav-link">Experience</a>
+        <nav className={styles.nav}>
+          <a href="#services" className={styles.navLink}>Services</a>
+          <a href="#works" className={styles.navLink}>Works</a>
+          <a href="#notes" className={styles.navLink}>Notes</a>
+          <a href="#experience" className={styles.navLink}>Experience</a>
         </nav>
       </div>
 
-      <div className="contact-area">
-        <a href="tel:+1313345678" className="phone">+001 (313) 345 678</a>
-        <Button
-          variant="outline"
-          size="small"
-          className="cta"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+      <div className={styles.contactArea}>
+        <a href="tel:+1313345678" className={styles.phone}>+001 (313) 345 678</a>
+        <Button variant="outline" size="small" className={styles.cta}>
           Call
         </Button>
       </div>
