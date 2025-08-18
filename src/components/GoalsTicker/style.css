@@ -1,39 +1,8 @@
-.goals-container {
-  position: absolute;
-  bottom: 20px;
-  padding: 0px !important;
-  width: 100%;
-  background-color: rgb(77, 168, 218);
-  white-space: nowrap;
-  transform: skewY(-1.2deg);
-  z-index: 11;
-}
-
-.goals-blender {
-  position: absolute;
-  bottom: 0;
-  height: 40px;
-  width: 100%;
-  z-index: 11;
-  background-color: rgba(248, 199, 12);
-}
-
-.goals-strip {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(248, 199, 12, 0.6);
-}
-
-.goals-marquee {
-  display: inline-block;
-  white-space: nowrap;
-  font-family: exo, sans-serif;
-  font-weight: bold;
-  font-size: 1.25rem;
-  padding: 4px;
-  color: rgba(250, 249, 246, 0.8);
-  animation: scroll 40s linear infinite;
-}
+/* Hidden ticker for the clean hero look */
+.goals-container { display: none; }
+.goals-blender { display: none; }
+.goals-strip { display: none; }
+.goals-marquee { display: none; }
 
 @keyframes scroll {
   0% {

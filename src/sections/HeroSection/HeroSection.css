@@ -1,137 +1,168 @@
 .hero {
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  z-index: 5;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--color-background);
 }
 
-.image-wrapper {
+.hero-card {
+  position: relative;
+  width: min(1160px, 92vw);
+  height: 80vh;
+  background: var(--color-surface);
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+/* Center portrait with brush */
+.portrait {
   position: absolute;
-  bottom: var(--spacing-xl);
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  height: 82%;
-  aspect-ratio: 2 / 3;
-  z-index: 10;
+  height: 78%;
+  aspect-ratio: 2/3;
+  z-index: 5;
+  display: grid;
+  place-items: end center;
 }
 
-.image {
-  width: 100%;
+.brush {
+  position: absolute;
+  inset: auto 0 14% 0;
+  margin: 0 auto;
+  width: 520px;
+  height: 300px;
+  background: radial-gradient(120px 100px at 20% 60%, rgba(35,163,148,0.95), rgba(35,163,148,0.95)),
+    radial-gradient(160px 120px at 60% 40%, rgba(35,163,148,0.95), rgba(27,131,120,0.95));
+  clip-path: polygon(4% 36%, 14% 24%, 22% 30%, 32% 16%, 44% 28%, 56% 18%, 68% 28%, 74% 18%, 84% 28%, 92% 22%, 96% 36%, 88% 54%, 82% 48%, 74% 62%, 66% 56%, 58% 70%, 48% 64%, 36% 76%, 28% 64%, 18% 72%, 10% 62%);
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
+  z-index: 3;
+}
+
+.portrait-image {
+  position: relative;
+  width: 360px;
   height: auto;
-  filter: var(--drop-shadow);
-  display: block;
-  aspect-ratio: 2 / 3;
-  user-select: none;
-  pointer-events: none;
-  z-index: 11;
+  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.25));
+  z-index: 6;
 }
 
-.email {
+/* Left column */
+.hero-left {
   position: absolute;
-  bottom: 384px;
-  left: 0;
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  width: fit-content;
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  line-height: 1;
-  letter-spacing: normal;
-  color: var(--color-text-light);
-  background-color: var(--color-primary-light);
-  filter: var(--drop-shadow);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
-  border: 1px solid var(--color-text-light);
-  border-bottom: 0px;
-  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
-  transform-origin: bottom left;
-  transform: rotate(90deg);
-  transition: all var(--transition-slow);
-  z-index: 12;
-  cursor: pointer;
+  left: 56px;
+  top: 34%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 16px;
+  align-content: start;
 }
 
-.email:hover {
-  background-color: rgba(40, 40, 40, 0.7);
-  backdrop-filter: var(--backdrop-blur);
-}
-
-.content {
-  position: absolute;
-  bottom: 108px;
-  left: 84px;
-  max-width: 20%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  align-items: left;
-  justify-content: center;
-  color: var(--color-text-primary);
-  z-index: 15;
-}
-
-.title {
+.hero-title {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-tight);
-  text-transform: uppercase;
-  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text-primary);
 }
 
-.description {
+.email-pill {
+  width: fit-content;
+  background: var(--color-secondary);
+  color: var(--color-text-light);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: var(--font-family-body);
+  border: 1px solid rgba(255,255,255,0.9);
+  filter: var(--drop-shadow);
+}
+
+.experience {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.years {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.label {
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Right column */
+.hero-right {
+  position: absolute;
+  right: 56px;
+  top: 30%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+
+.side-note {
+  max-width: 320px;
+  color: var(--color-text-secondary);
   font-family: var(--font-family-secondary);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-tight);
-  font-size: var(--font-size-lg);
-  margin: 0;
+}
+
+.badge {
+  display: grid;
+  grid-template-columns: 56px auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.badge-inner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--color-text-secondary);
+  display: grid;
+  place-items: center;
+}
+
+.badge-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--color-text-secondary);
+  border-radius: 50%;
+}
+
+.badge-text {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
 }
 
 .cta {
-  width: fit-content;
-  margin-top: var(--spacing-sm);
+  margin-top: 8px;
 }
 
-/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-card { height: auto; padding-bottom: 120px; }
+  .hero-left { left: 28px; top: 24%; }
+  .hero-right { right: 28px; top: 24%; }
+  .hero-title { font-size: 42px; }
+  .portrait-image { width: 300px; }
+  .brush { width: 420px; height: 240px; }
+}
+
 @media (max-width: 768px) {
-  .content {
-    left: var(--spacing-lg);
-    right: var(--spacing-lg);
-    max-width: none;
-    bottom: var(--spacing-2xl);
-  }
-
-  .title {
-    font-size: var(--font-size-2xl);
-  }
-
-  .description {
-    font-size: var(--font-size-base);
-  }
-
-  .email {
-    bottom: 200px;
-    font-size: var(--font-size-sm);
-    padding: var(--spacing-xs);
-  }
-}
-
-@media (max-width: 480px) {
-  .content {
-    left: var(--spacing-md);
-    right: var(--spacing-md);
-    bottom: var(--spacing-xl);
-  }
-
-  .title {
-    font-size: var(--font-size-xl);
-  }
-
-  .description {
-    font-size: var(--font-size-sm);
-  }
+  .portrait { position: static; transform: none; height: auto; margin: 24px auto 0; }
+  .hero-card { padding-bottom: 28px; }
+  .hero-left, .hero-right { position: static; transform: none; margin: 0 20px; }
+  .hero-title { font-size: 36px; }
+  .hero-right { justify-items: start; }
 }

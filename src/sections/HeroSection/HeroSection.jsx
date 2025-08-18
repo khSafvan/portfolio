@@ -4,9 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CursorContext } from "../../contexts/cursorState";
 import { Button } from "../../components/ui";
 import { portfolioConfig } from "../../config/portfolio";
-import InfiniteScrollBackground from "../../components/InfiniteScrollBackground";
 import Header from "../../components/Header";
-import GoalsTicker from "../../components/GoalsTicker";
 import "./HeroSection.css";
 
 // Register ScrollTrigger plugin
@@ -56,51 +54,65 @@ export default function HeroSection() {
 
   return (
     <section ref={sectionRef} className="hero">
-      <InfiniteScrollBackground />
-      <Header />
+      <div className="hero-card">
+        <Header />
 
-      {/* Developer Image */}
-      <div
-        className="image-wrapper"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <img
-          draggable="false"
-          src={hero.image}
-          alt="Developer"
-          className="image"
-        />
+        {/* Center Portrait with teal brush */}
+        <div className="portrait" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <div className="brush" aria-hidden></div>
+          <img draggable="false" src={hero.image} alt="Developer" className="portrait-image" />
+        </div>
+
+        {/* Left content */}
+        <div className="hero-left">
+          <h1 className="hero-title">
+            {hero.greeting},<br />I’m {hero.name}
+          </h1>
+          <a
+            href={`mailto:${portfolioConfig.personal.email}`}
+            className="email-pill"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {portfolioConfig.personal.email}
+          </a>
+          <div className="experience">
+            <div className="years">10</div>
+            <div className="label">
+              <div>Years</div>
+              <div>Experience</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right content */}
+        <div className="hero-right">
+          <p className="side-note">
+            I design beautifully simple things. And I love what I do.
+          </p>
+          <div className="badge">
+            <div className="badge-inner">
+              <div className="badge-dot" />
+            </div>
+            <div className="badge-text">
+              IDF CERTIFIED
+              <br />
+              PROFESSIONAL
+              <br />
+              UI/UX DESIGNER
+            </div>
+          </div>
+          <Button
+            variant="primary"
+            size="large"
+            className="cta"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {hero.ctaText}
+          </Button>
+        </div>
       </div>
-
-      {/* Hero Content */}
-      <div className="content">
-        <h1 className="title">
-          {hero.greeting} {hero.name}
-        </h1>
-        <p className="description">{hero.description}</p>
-        <Button
-          variant="primary"
-          size="large"
-          className="cta"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {hero.ctaText}
-        </Button>
-      </div>
-
-      {/* Email Contact */}
-      <a
-        href={`mailto:${portfolioConfig.personal.email}`}
-        className="email"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {portfolioConfig.personal.email}
-      </a>
-
-      <GoalsTicker />
     </section>
   );
 }

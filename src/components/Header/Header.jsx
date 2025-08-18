@@ -10,31 +10,35 @@ const Header = () => {
 
   return (
     <header className="header">
-      <a
-        href="#home"
-        className="logo"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <img
-          draggable="false"
-          src="/wolfLogo.png"
-          width={64}
-          height={64}
-          alt="Nerdy Wolf"
-          className="logo-image"
-        />
-      </a>
+      <div className="brand-and-nav">
+        <a
+          href="#home"
+          className="logo"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <span className="brand">Binjan</span>
+        </a>
+        <nav className="nav">
+          <a href="#services" className="nav-link">Services</a>
+          <a href="#works" className="nav-link">Works</a>
+          <a href="#notes" className="nav-link">Notes</a>
+          <a href="#experience" className="nav-link">Experience</a>
+        </nav>
+      </div>
 
-      <Button
-        variant="secondary"
-        size="medium"
-        className="cta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        Schedule a Call
-      </Button>
+      <div className="contact-area">
+        <a href="tel:+1313345678" className="phone">+001 (313) 345 678</a>
+        <Button
+          variant="outline"
+          size="small"
+          className="cta"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          Call
+        </Button>
+      </div>
     </header>
   );
 };

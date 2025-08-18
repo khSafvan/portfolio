@@ -14,31 +14,6 @@
   }
 }
 
-.infinite-scroll-bg {
-  background: var(--bg-url) repeat 0 0;
-  animation: bg-scrolling-reverse 0.92s linear infinite;
-  font-family: "Exo", sans-serif;
-  color: rgb(153, 153, 153);
-  padding: 4rem;
-  text-align: center;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  pointer-events: none;
-}
+.infinite-scroll-bg { display: none; }
 
-.infinite-scroll-bg::before {
-  content: " ";
-  font-size: 5rem;
-  font-weight: 100;
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.2;
-  pointer-events: none;
-}
+.infinite-scroll-bg::before { display: none; }
