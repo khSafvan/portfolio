@@ -7,9 +7,8 @@ export const portfolioConfig = {
     name: "Safvan",
     title: "Web Developer",
     email: "khalifasafvan@yahoo.com",
-    location: "Your Location",
+    location: "Navsari, Gujarat, India",
   },
-
   // Hero Section
   hero: {
     greeting: "Hi, I am",
@@ -20,7 +19,7 @@ export const portfolioConfig = {
     design, efficient code, and strategic thinking to turn ideas into
     powerful web experiences.`,
     ctaText: "Hire Me",
-    image: "/logo.png", // Path to your hero image
+    image: "/dev8bitArt.png", // Path to your hero image
   },
 
   // Goals Ticker (the scrolling text at the bottom)
