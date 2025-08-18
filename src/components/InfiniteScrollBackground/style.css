@@ -14,6 +14,6 @@
   }
 }
 
-.infinite-scroll-bg { display: none; }
+.infinite-scroll-bg { display: none !important; }
 
 .infinite-scroll-bg::before { display: none; }

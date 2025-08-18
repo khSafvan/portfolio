@@ -10,10 +10,10 @@
   position: relative;
   width: min(1160px, 92vw);
   height: 80vh;
-  background: var(--color-surface);
-  border-radius: 8px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
+  background: transparent; /* No inner card background */
+  border-radius: 0;
+  box-shadow: none; /* No drop shadow */
+  overflow: visible;
 }
 
 /* Center portrait with brush */
@@ -29,24 +29,13 @@
   place-items: end center;
 }
 
-.brush {
-  position: absolute;
-  inset: auto 0 14% 0;
-  margin: 0 auto;
-  width: 520px;
-  height: 300px;
-  background: radial-gradient(120px 100px at 20% 60%, rgba(35,163,148,0.95), rgba(35,163,148,0.95)),
-    radial-gradient(160px 120px at 60% 40%, rgba(35,163,148,0.95), rgba(27,131,120,0.95));
-  clip-path: polygon(4% 36%, 14% 24%, 22% 30%, 32% 16%, 44% 28%, 56% 18%, 68% 28%, 74% 18%, 84% 28%, 92% 22%, 96% 36%, 88% 54%, 82% 48%, 74% 62%, 66% 56%, 58% 70%, 48% 64%, 36% 76%, 28% 64%, 18% 72%, 10% 62%);
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
-  z-index: 3;
-}
+.brush { display: none; }
 
 .portrait-image {
   position: relative;
   width: 360px;
   height: auto;
-  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.18));
   z-index: 6;
 }
 
