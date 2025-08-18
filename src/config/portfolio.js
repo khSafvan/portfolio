@@ -20,7 +20,7 @@ export const portfolioConfig = {
     design, efficient code, and strategic thinking to turn ideas into
     powerful web experiences.`,
     ctaText: "Hire Me",
-    image: "/dev8bitArt.png", // Path to your hero image
+    image: "/logo.png", // Path to your hero image
   },
 
   // Goals Ticker (the scrolling text at the bottom)
