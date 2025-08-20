@@ -1,0 +1,58 @@
+/* Container */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay */
+.intro-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  overflow: hidden;
+}
+
+/* Scanlines */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+}
+
+/* Logo */
+.logo {
+  color: #00ffea;
+  font-family: "Press Start 2P", monospace;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  display: flex;
+}
+
+.letter {
+  opacity: 0;
+  display: inline-block;
+}

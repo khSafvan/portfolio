@@ -85,11 +85,7 @@ export default function HeroSection() {
           {hero.greeting} {hero.name}
         </h1>
         <p className="description">{hero.description}</p>
-        {/* <div className="btn-hole">
-          <div className="btn-top-surface">Hire Me!</div>
-        </div> 
-        */}
-        <GameButton color="#4CAF50">Hire Me!</GameButton>
+        <GameButton color="#4da8da">Hire Me!</GameButton>
       </div>
 
       {/* Email Contact */}
