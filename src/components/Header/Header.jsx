@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { CursorContext } from "../../contexts/cursorState";
-import { Button } from "../ui";
 import "./Header.css";
 
 const Header = () => {
@@ -26,7 +25,7 @@ const Header = () => {
         />
       </a>
 
-      <Button
+      <button
         variant="secondary"
         size="medium"
         className="cta"
@@ -34,7 +33,7 @@ const Header = () => {
         onMouseLeave={handleMouseLeave}
       >
         Schedule a Call
-      </Button>
+      </button>
     </header>
   );
 };

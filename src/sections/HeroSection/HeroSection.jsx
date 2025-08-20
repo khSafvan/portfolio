@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CursorContext } from "../../contexts/cursorState";
-import { Button } from "../../components/ui";
 import { portfolioConfig } from "../../config/portfolio";
 import InfiniteScrollBackground from "../../components/InfiniteScrollBackground";
 import Header from "../../components/Header";
 import GoalsTicker from "../../components/GoalsTicker";
 import "./HeroSection.css";
+import GameButton from "../../components/GameButton/GameButton";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -16,9 +16,15 @@ export default function HeroSection() {
   const { setButtonHovered } = useContext(CursorContext);
   const { hero } = portfolioConfig;
   const sectionRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
 
   const handleMouseEnter = () => setButtonHovered(true);
   const handleMouseLeave = () => setButtonHovered(false);
+
+  const handleClick = () => {
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 500); // reset after animation
+  };
 
   // GSAP Sticky Scroll Effect
   useEffect(() => {
@@ -79,15 +85,11 @@ export default function HeroSection() {
           {hero.greeting} {hero.name}
         </h1>
         <p className="description">{hero.description}</p>
-        <Button
-          variant="primary"
-          size="large"
-          className="cta"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {hero.ctaText}
-        </Button>
+        {/* <div className="btn-hole">
+          <div className="btn-top-surface">Hire Me!</div>
+        </div> 
+        */}
+        <GameButton color="#4CAF50">Hire Me!</GameButton>
       </div>
 
       {/* Email Contact */}

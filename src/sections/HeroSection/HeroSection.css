@@ -96,6 +96,46 @@
   margin-top: var(--spacing-sm);
 }
 
+.btn-hole {
+  display: inline-block;
+  background-color: lightblue;
+  margin: 8px;
+  border-radius: 8px;
+  box-shadow: inset 0 -8px 0 rgba(0, 0, 0, 0.2), 0 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.btn-top-surface {
+  position: relative;
+  top: -8px;
+  left: 0;
+  padding: 6px 8px;
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  background-color: lightblue;
+  border-radius: 8px;
+  z-index: 11;
+  transition: all 0.2s ease;
+}
+
+.btn-hole:active {
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-top-surface:active {
+  position: relative;
+  top: 0px;
+  left: 0;
+  color: rgb(255, 255, 255, 0.8);
+}
+
+.btn-hole,
+.btn-top-surface {
+  height: fit-content;
+  width: fit-content;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .content {
